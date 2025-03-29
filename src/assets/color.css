@@ -1,0 +1,27 @@
+:root {
+  /* 主要配色 */
+  --primary-color: #6a0dad; /* 深紫色 */
+  --secondary-color: #a663cc; /* 浅紫色 */
+  --accent-color: #e5cff7; /* 强调色 */
+
+  /* 背景颜色 */
+  --light-bg: #f8f7fc; /* 浅色背景 */
+  --dark-bg: #1c1c1e; /* 深色背景 */
+
+  /* 文字颜色 */
+  --dark-text: #1a1a1a; /* 深色文本（接近黑色） */
+  --light-text: #ffffff; /* 浅色文本（白色） */
+  --gray-text: #7d7d7d; /* 灰色文本 */
+
+  /* 边框 */
+  --border-color: #d0b3e1;
+
+  /* 按钮 */
+  --button-bg: var(--primary-color);
+  --button-hover-bg: #580a8a;
+  --button-text: var(--light-text);
+
+  /* 卡片 */
+  --card-bg: white;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
