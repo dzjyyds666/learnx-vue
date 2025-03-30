@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/home.vue'
 import Login from '@/views/login.vue'
-import TeacherHome from '@/views/teacherHome.vue'
+import TeacherHome from '@/views/teacher/teacherHome.vue'
+import classManager from '@/views/teacher/classManager.vue'
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     path: '/teacherHome',
     name: 'TeacherHome',
     component: TeacherHome,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/teacher/class_manage',
+    name: 'ClassManager',
+    component: classManager,
     meta: { requiresAuth: true },
   },
 ]

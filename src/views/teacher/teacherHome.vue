@@ -33,9 +33,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import classList from '../components/console_class_list.vue'
-import classAdd from '../components/console_class_add.vue'
-import classCrash from '../components/console_class_crash.vue'
+import classList from '../../components/teacher/console_class_list.vue'
+import classAdd from '../../components/teacher/console_class_add.vue'
+import classCrash from '../../components/teacher/console_class_crash.vue'
 
 const sideBarIndex = ref(1)
 
@@ -63,7 +63,7 @@ const handleOpen = (key, keyPath) => {
   .home_header {
     width: 100%;
     background-color: var(--primary-color); // 确保使用 CSS 变量
-    height: 10%;
+    height: 8%;
     display: flex;
     align-items: center;
     padding: 0 20px 0 20px;
@@ -79,12 +79,12 @@ const handleOpen = (key, keyPath) => {
 
   .sidebar {
     width: 15%;
-    height: 90%;
+    height: 92%;
     background-color: var(--light-bg);
   }
   .main_content {
     width: 85%;
-    height: 90%;
+    height: 92%;
     // 超出页面可以滑动
     overflow: auto;
   }

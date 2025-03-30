@@ -1,7 +1,7 @@
 :root {
   /* 主要配色 */
-  --primary-color: #6a0dad; /* 深紫色 */
-  --secondary-color: #a663cc; /* 浅紫色 */
+  --primary-color: #a663cc; /* 深紫色 */
+  --secondary-color: #6a0dad; /* 浅紫色 */
   --accent-color: #e5cff7; /* 强调色 */
 
   /* 背景颜色 */

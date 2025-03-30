@@ -1,10 +1,15 @@
 <template>
   <div class="classList">
-    <el-card class="box-card classList_item" v-for="item in 10" :key="item">
+    <el-card
+      class="box-card classList_item"
+      v-for="item in 10"
+      :key="item"
+      @click="$router.push('/teacher/class_manage')"
+    >
       <template #header>
         <div>
           <span>课程名称</span>
-          <el-button style="float: right" type="text" @click="openClassInfoDrawer"
+          <el-button style="float: right" type="text" @click.stop="openClassInfoDrawer"
             >查看详情</el-button
           >
         </div>

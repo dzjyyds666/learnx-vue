@@ -1,7 +1,10 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
 
 export const baseURL = 'http://127.0.0.1:29000/v1'
+
+const router = useRouter()
 
 export function request(config) {
   // 创建axios实例
@@ -15,6 +18,8 @@ export function request(config) {
   // 拦截请求，如果获取某个请求需要携带一些额外数据
   instance.interceptors.request.use(
     (config) => {
+      // 头部添加token
+      config.headers.Authorization = localStorage.getItem('token')
       return config
     },
     (err) => {
@@ -26,8 +31,9 @@ export function request(config) {
   instance.interceptors.response.use(
     (res) => {
       if (res.status_code == 401) {
-        console.log('token过期')
+        ElMessage.error('登录过期，请重新登录')
         // 跳转到登录页面
+        router.push('/login')
       }
       return res.data
     },
