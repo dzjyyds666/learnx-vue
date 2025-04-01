@@ -19,7 +19,7 @@ onMounted(() => {
   } else if (role == 1) {
     // 如果是学生，跳转到学生首页
     console.log('学生')
-    // router.push({ path: '/studentHome' })
+    router.push({ path: '/studentHome' })
   } else {
     // 如果是管理员，跳转到管理员首页
     console.log('管理员')

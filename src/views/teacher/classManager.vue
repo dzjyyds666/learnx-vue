@@ -51,7 +51,7 @@
         height="400px"
         v-if="navIndex === 6"
       />
-      <upload v-if="navIndex === 7" />
+      <upload width="200px" height="200px" v-if="navIndex === 7" />
     </div>
   </div>
 </template>

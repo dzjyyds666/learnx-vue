@@ -4,14 +4,20 @@
       <span class="classAdd_title_text">添加课程</span>
     </div>
     <el-form label-position="right" :model="classInfo" label-width="100px" class="classAdd_form">
+      <el-form-item label="课程封面:">
+        <upload width="200px" height="200px"></upload>
+      </el-form-item>
       <el-form-item label="课程名:">
         <el-input v-model="classInfo.class_name" placeholder="请输入课程名"></el-input>
       </el-form-item>
       <el-form-item label="课程类型:">
         <el-select v-model="classInfo.class_type" placeholder="请选择课程类型">
-          <el-option label="必修课" value="必修课"></el-option>
-          <el-option label="选修课" value="选修课"></el-option>
-          <el-option label="实践课" value="实践课"></el-option>
+          <el-option
+            :label="item"
+            :value="item"
+            v-for="(item, index) in class_type_list"
+            :key="index"
+          ></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="课程学分:">
@@ -31,12 +37,24 @@
         </el-select>
       </el-form-item>
       <el-form-item label="课程学期:">
-        <el-date-picker v-model="startYear" type="year" placeholder="选择开始学年" />
-        <span style="margin: 0 10px; color: var(--gray-text)"> -> </span>
-        <el-date-picker v-model="endYear" type="year" placeholder="选择结束学年" />
-        <span style="width: 200px; margin-left: 30px"
-          ><el-input clearable placeholder="输入学期" v-model="studyTerm"></el-input
-        ></span>
+        <div style="display: flex">
+          <el-select
+            v-model="studyYear"
+            placeholder="请选择课程学期"
+            style="width: 400px; margin-right: 50px"
+          >
+            <el-option
+              v-for="(item, index) in class_school_term"
+              :key="index"
+              :label="item"
+              :value="item"
+            ></el-option>
+          </el-select>
+          <el-select v-model="studyTerm" placeholder="请选择课程学期">
+            <el-option label="第一学期" value="第一学期"></el-option>
+            <el-option label="第二学期" value="第二学期"></el-option>
+          </el-select>
+        </div>
       </el-form-item>
       <el-form-item label="课程学时:">
         <el-input v-model="classInfo.class_time" placeholder="请输入课程学时"></el-input>
@@ -89,6 +107,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import upload from '../../components/common/upload.vue'
 const classInfo = ref({
   class_name: '',
   class_desc: '',
@@ -100,14 +119,43 @@ const classInfo = ref({
   class_outline: '',
 })
 
-const startYear = ref('')
-const endYear = ref('')
+const class_type_list = ref(['公共基础课', '专业课', '院级选修课', '校级选修课'])
+const class_school_term = ref([
+  '2024-2025',
+  '2025-2026',
+  '2026-2027',
+  '2027-2028',
+  '2028-2029',
+  '2029-2030',
+  '2030-2031',
+  '2031-2032',
+  '2032-2033',
+  '2033-2034',
+  '2034-2035',
+  '2035-2036',
+  '2036-2037',
+  '2037-2038',
+  '2038-2039',
+  '2039-2040',
+  '2040-2041',
+  '2041-2042',
+  '2042-2043',
+  '2043-2044',
+  '2044-2045',
+  '2045-2046',
+  '2046-2047',
+  '2047-2048',
+  '2048-2049',
+  '2049-2050',
+])
+
+const studyYear = ref('')
 const studyTerm = ref('')
 
 const dialogVisible = ref(false)
 
-const handleCreateClass = (classInfo) => {
-  classInfo.value.class_school_term = `${startYear.value}-${endYear.value} ${studyTerm.value}`
+const handleCreateClass = () => {
+  classInfo.value.class_school_term = `${studyYear.value}年${studyTerm.value}`
   console.log('创建课程', classInfo.value)
 }
 
@@ -128,16 +176,14 @@ const resetClassInfo = () => {
 <style lang="scss" scoped>
 .classAdd {
   background-color: var(--light-background);
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   .classAdd_title {
-    margin: 50px 0 0 0;
+    margin: 20px;
     text-align: center;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1rem;
     color: var(--primary-color);
   }
   .classAdd_form {

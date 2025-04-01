@@ -1,34 +1,14 @@
 <template>
-  <div class="file_upload">
+  <div class="file_upload" :style="{ width: props.width, height: props.height }">
     <div class="upload_header"></div>
     <input type="file" @change="handleFileSelect" ref="fileInput" style="display: none" />
     <div class="upload_content" @click="triggerFileInput" @dragover.prevent @drop="handleDrop">
       <!-- 原生文件选择 -->
-      <img src="../../assets/img/upload_to_cload.png" alt="" width="80px" />
+      <img src="../../assets/img/upload_to_cload.png" alt="" width="50px" />
       <p>点击或者拖动文件上传</p>
-      <!-- 操作按钮 -->
-
-      <!-- 文件信息 -->
-      <!-- <div v-if="file" class="file-info">
-        <p>文件名: {{ file.name }}</p>
-        <p>文件大小: {{ formatSize(file.size) }}</p>
-        <div class="progress-container">
-          上传进度:
-          <div class="progress-bar">
-            <div class="progress-fill" :style="{ width: progress + '%' }"></div>
-          </div>
-          {{ progress.toFixed(2) }}%
-        </div>
-      </div> -->
     </div>
     <div class="upload_footer">
-      <div v-if="file" class="file-info">
-        <p>name: {{ file.name }} size: {{ formatSize(file.size) }}</p>
-        <div class="progress-container">
-          上传进度:
-          <el-progress :percentage="progress" :status="progress === 100 ? 'success' : null" />
-        </div>
-      </div>
+      <el-text line-clamp="1">{{ file.name }}</el-text>
       <el-button @click="startUpload" type="primary" :disabled="!file || uploading"
         >开始上传</el-button
       >
@@ -42,7 +22,17 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import cosApi from '@/api/cos'
-import { request } from '@/api/request'
+
+const props = defineProps({
+  width: {
+    type: String,
+    default: '200px',
+  },
+  height: {
+    type: String,
+    default: '200px',
+  },
+})
 
 // 常量
 const CHUNK_SIZE = 200 * 1024 * 1024 // 200MB
@@ -149,6 +139,10 @@ const uplaodSingle = async (fid) => {
   }
 }
 
+const uploadInit = async () => {
+  // 初始化上传
+}
+
 // 分片上传
 const uploadPart = async () => {
   if (!file.value || uploading.value) return
@@ -231,9 +225,6 @@ const formatSize = (bytes) => {
 
 <style lang="scss" scoped>
 .file_upload {
-  width: 300px;
-  height: 400px;
-  padding: 20px;
   // 居中
   margin: 0 auto;
   // 内部居中
@@ -242,9 +233,7 @@ const formatSize = (bytes) => {
   align-items: center;
   flex-direction: column;
   .upload_content {
-    padding: 20px;
-    width: 260px;
-    height: 160px;
+    padding: 10px;
     border-radius: 20px;
     // 虚线边框
     border: 1px dashed black;

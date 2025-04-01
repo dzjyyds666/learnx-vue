@@ -1,6 +1,9 @@
 <template>
   <div class="class_resource">
     <div style="margin: 30px">
+      <div style="margin: 10px 0">
+        <el-button type="primary" @click="chapterDialog = true">创建章节</el-button>
+      </div>
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item name="1" class="class_chapter" v-for="item in 3" :key="item">
           <template #title>
@@ -29,6 +32,15 @@
         </el-collapse-item>
       </el-collapse>
     </div>
+    <el-dialog v-model="chapterDialog" title="创建章节" width="500">
+      <el-input clearable placeholder="输入章节名称" v-model="chapterName"></el-input>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="closeChapterDialog">取消</el-button>
+          <el-button type="primary" @click="createChapter"> 创建 </el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -36,6 +48,19 @@
 import { ref } from 'vue'
 
 const activeIndex = ref(null)
+
+const chapterDialog = ref(false)
+
+const chapterName = ref('')
+
+const closeChapterDialog = () => {
+  chapterDialog.value = false
+  chapterName.value = ''
+}
+
+const createChapter = async () => {
+  // 创建章节
+}
 </script>
 
 <style lang="scss" scoped>

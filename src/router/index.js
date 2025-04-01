@@ -3,6 +3,8 @@ import Home from '@/views/home.vue'
 import Login from '@/views/login.vue'
 import TeacherHome from '@/views/teacher/teacherHome.vue'
 import classManager from '@/views/teacher/classManager.vue'
+import studentHome from '@/views/student/student_home.vue'
+import studentClassInfo from '@/views/student/student_class_info.vue'
 
 const routes = [
   {
@@ -26,6 +28,18 @@ const routes = [
     path: '/teacher/class_manage',
     name: 'ClassManager',
     component: classManager,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/studentHome',
+    name: 'StudengHome',
+    component: studentHome,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/student/class_info',
+    name: 'StudentClassInfo',
+    component: studentClassInfo,
     meta: { requiresAuth: true },
   },
 ]
