@@ -1,12 +1,7 @@
 <template>
   <div class="classAdd">
-    <div class="classAdd_title">
-      <span class="classAdd_title_text">添加课程</span>
-    </div>
     <el-form label-position="right" :model="classInfo" label-width="100px" class="classAdd_form">
-      <el-form-item label="课程封面:">
-        <upload width="200px" height="200px"></upload>
-      </el-form-item>
+      <upload width="200px" height="200px"></upload>
       <el-form-item label="课程名:">
         <el-input v-model="classInfo.class_name" placeholder="请输入课程名"></el-input>
       </el-form-item>

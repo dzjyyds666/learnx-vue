@@ -8,7 +8,7 @@
       <p>点击或者拖动文件上传</p>
     </div>
     <div class="upload_footer">
-      <el-text line-clamp="1">{{ file.name }}</el-text>
+      <el-text line-clamp="1">{{ file != null ? file.name : null }}</el-text>
       <el-button @click="startUpload" type="primary" :disabled="!file || uploading"
         >开始上传</el-button
       >

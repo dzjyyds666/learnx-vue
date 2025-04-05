@@ -16,7 +16,8 @@ const myPlayer = ref(null)
 const props = defineProps({
   videoUrl: {
     type: String,
-    default: '',
+    default:
+      'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/hls/xgplayer-demo.m3u8',
   },
   videoType: {
     type: String,

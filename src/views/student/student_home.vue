@@ -27,16 +27,16 @@
     <div class="student_body">
       <div class="student_body_left">
         <el-menu default-active="1" style="height: 100%">
-          <el-menu-item index="1" @click="navIndex = 1">
-            <template #title>
-              <el-icon><Collection /></el-icon>
-              <span>我的课程</span>
-            </template>
-          </el-menu-item>
           <el-menu-item index="2" @click="navIndex = 2">
             <template #title>
               <el-icon><Comment /></el-icon>
               <span>社区</span>
+            </template>
+          </el-menu-item>
+          <el-menu-item index="1" @click="navIndex = 1">
+            <template #title>
+              <el-icon><Collection /></el-icon>
+              <span>我的课程</span>
             </template>
           </el-menu-item>
         </el-menu>

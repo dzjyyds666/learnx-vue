@@ -5,6 +5,7 @@ import TeacherHome from '@/views/teacher/teacherHome.vue'
 import classManager from '@/views/teacher/classManager.vue'
 import studentHome from '@/views/student/student_home.vue'
 import studentClassInfo from '@/views/student/student_class_info.vue'
+import resourcePreview from '@/components/common/resource_preview.vue'
 
 const routes = [
   {
@@ -40,6 +41,13 @@ const routes = [
     path: '/student/class_info',
     name: 'StudentClassInfo',
     component: studentClassInfo,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/resource/preview',
+    name: 'ResourcePreview',
+    component: resourcePreview,
+    props: true,
     meta: { requiresAuth: true },
   },
 ]
